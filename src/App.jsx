@@ -85,7 +85,7 @@ export default function App() {
 
   return !loading && data ? (
     <div className="min-h-screen w-full bg-neutral-800">
-      <div className="bg-neutral-800 text-white p-3 flex justify-center items-center gap-5">
+      <div className="bg-neutral-800 text-white p-3 sticky top-0 left-0 z-50 flex justify-center items-center gap-5">
         <h1 className="flex justify-center items-center gap-1">
           <span>Score: </span>
           <span className="text-red-400 text-xl">{score}</span>

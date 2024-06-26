@@ -11,7 +11,7 @@ export default function Card({ img, background, displayName, action }) {
           alt="background"
         />
         <img
-          className="aspect-[2/3] group-hover:scale-150 duration-500 z-50 relative object-contain"
+          className="aspect-[2/3] group-hover:scale-150 duration-500 z-20 relative object-contain"
           src={img}
           alt={displayName}
         />
