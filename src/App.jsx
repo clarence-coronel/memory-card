@@ -37,8 +37,6 @@ export default function App() {
     };
 
     fetchData();
-
-    console.log(agentPool);
   }, []);
 
   const generateNewAgentPool = (agents, limit) => {
@@ -85,9 +83,9 @@ export default function App() {
     }
   };
 
-  return (
-    <div className="min-h-screen w-full bg-neutral-900">
-      <div className="bg-neutral-800 text-white p-2 flex justify-center items-center gap-5">
+  return !loading && data ? (
+    <div className="min-h-screen w-full bg-neutral-800">
+      <div className="bg-neutral-800 text-white p-3 flex justify-center items-center gap-5">
         <h1 className="flex justify-center items-center gap-1">
           <span>Score: </span>
           <span className="text-red-400 text-xl">{score}</span>
@@ -97,19 +95,29 @@ export default function App() {
           <span className="text-red-400 text-xl">{highScore}</span>
         </h2>
       </div>
-      <div className="max-md:grid-cols-2 max-xl:grid-cols-4 grid grid-cols-6 gap-5 p-5">
-        {!loading &&
-          data &&
-          agentPool.map((agent) => (
-            <Card
-              key={agent.uuid}
-              img={agent.fullPortrait}
-              background={agent.background}
-              displayName={agent.displayName}
-              action={cardClickHandler}
-            />
-          ))}
+      <div className="max-md:grid-cols-2 max-xl:grid-cols-4 grid grid-cols-6 gap-5 px-5">
+        {agentPool.map((agent) => (
+          <Card
+            key={agent.uuid}
+            img={agent.fullPortrait}
+            background={agent.background}
+            displayName={agent.displayName}
+            action={cardClickHandler}
+          />
+        ))}
       </div>
+    </div>
+  ) : (
+    <div className="w-full flex-col gap-2 min-h-screen flex justify-center items-center bg-neutral-800">
+      <img
+        className="w-[200px]"
+        src="https://freelogopng.com/images/all_img/1664302216valorant-logo-png.png"
+        alt=""
+      />
+      <h1 className="text-2xl text-red-400 font-bold">Memory Card Game</h1>
+      <span className="text-white text-lg animate-pulse">
+        Retrieving Agents Information...
+      </span>
     </div>
   );
 }
